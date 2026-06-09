@@ -1,20 +1,20 @@
-/* âââââââââââââââââââââââââââââââââââââââââââ
-   ACTION SCHOOL â MAIN SCRIPT
+/* ═══════════════════════════════════════════
+   ACTION SCHOOL — MAIN SCRIPT
    Features: Nav scroll, mobile menu,
              language toggle (EN/ML),
              scroll reveal animations,
              hero video + sound toggle,
              form submission
-   âââââââââââââââââââââââââââââââââââââââââââ */
+   ═══════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* âââ State ââââââââââââââââââââââââââââ */
+  /* ─── State ──────────────────────────── */
   let currentLang = 'en';
   let videoMuted  = true;
 
-  /* âââ DOM Refs ââââââââââââââââââââââââââ */
+  /* ─── DOM Refs ────────────────────────── */
   const header         = document.getElementById('site-header');
   const menuToggle     = document.getElementById('menu-toggle');
   const mainNav        = document.getElementById('main-nav');
@@ -28,9 +28,9 @@
   const formSuccess    = document.getElementById('form-success');
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
-     HEADER â scroll class
-  âââââââââââââââââââââââââââââââââââââââ */
+  /* ═══════════════════════════════════════
+     HEADER — scroll class
+  ═══════════════════════════════════════ */
   function onScroll() {
     if (window.scrollY > 60) {
       header.classList.add('scrolled');
@@ -42,19 +42,19 @@
   onScroll();
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
-     HERO VIDEO â load handling
-  âââââââââââââââââââââââââââââââââââââââ */
+  /* ═══════════════════════════════════════
+     HERO VIDEO — load handling
+  ═══════════════════════════════════════ */
   if (heroVideo) {
     // Mark video as loaded when it starts playing
     heroVideo.addEventListener('canplay', () => {
       heroVideo.classList.add('loaded');
     });
 
-    // Ensure autoplay (some browsers need a user gesture â we start muted)
+    // Ensure autoplay (some browsers need a user gesture — we start muted)
     heroVideo.muted = true;
     heroVideo.play().catch(() => {
-      // Autoplay blocked â video stays hidden, fallback image shows
+      // Autoplay blocked — video stays hidden, fallback image shows
     });
 
     // Sound toggle button
@@ -84,9 +84,9 @@
   }
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
+  /* ═══════════════════════════════════════
      MOBILE NAV
-  âââââââââââââââââââââââââââââââââââââââ */
+  ═══════════════════════════════════════ */
   menuToggle.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
     menuToggle.classList.toggle('open', isOpen);
@@ -117,9 +117,9 @@
   });
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
-     LANGUAGE TOGGLE (EN â ML)
-  âââââââââââââââââââââââââââââââââââââââ */
+  /* ═══════════════════════════════════════
+     LANGUAGE TOGGLE (EN ↔ ML)
+  ═══════════════════════════════════════ */
   function applyLanguage(lang) {
     const attr = `data-${lang}`;
     document.querySelectorAll(`[${attr}]`).forEach(el => {
@@ -141,7 +141,7 @@
     });
 
     document.documentElement.lang = lang === 'ml' ? 'ml' : 'en';
-    langLabel.textContent = lang === 'en' ? 'à´®à´²à´¯à´¾à´³à´' : 'English';
+    langLabel.textContent = lang === 'en' ? 'മലയാളം' : 'English';
     currentLang = lang;
   }
 
@@ -153,9 +153,9 @@
   applyLanguage('en');
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
+  /* ═══════════════════════════════════════
      SCROLL REVEAL ANIMATION
-  âââââââââââââââââââââââââââââââââââââââ */
+  ═══════════════════════════════════════ */
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -182,9 +182,9 @@
   });
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
+  /* ═══════════════════════════════════════
      SMOOTH SCROLL for nav links
-  âââââââââââââââââââââââââââââââââââââââ */
+  ═══════════════════════════════════════ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
@@ -200,9 +200,9 @@
   });
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
+  /* ═══════════════════════════════════════
      ACTIVE NAV LINK on scroll
-  âââââââââââââââââââââââââââââââââââââââ */
+  ═══════════════════════════════════════ */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('#main-nav a[href^="#"]');
 
@@ -226,9 +226,9 @@
   window.addEventListener('scroll', updateActiveNav, { passive: true });
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
-     GALLERY VIDEO â lazy load
-  âââââââââââââââââââââââââââââââââââââââ */
+  /* ═══════════════════════════════════════
+     GALLERY VIDEO — lazy load
+  ═══════════════════════════════════════ */
   const galleryVideos = document.querySelectorAll('.gallery-video');
   const videoObserver = new IntersectionObserver(
     (entries) => {
@@ -246,16 +246,16 @@
   galleryVideos.forEach(v => videoObserver.observe(v));
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
+  /* ═══════════════════════════════════════
      ENQUIRY FORM
-  âââââââââââââââââââââââââââââââââââââââ */
+  ═══════════════════════════════════════ */
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
 
-      btn.textContent  = currentLang === 'en' ? 'â Sent! We\'ll be in touch.' : 'â à´à´¯à´àµà´àµ! à´à´àµà´àµ¾ à´¬à´¨àµà´§à´ªàµà´ªàµà´àµà´.';
+      btn.textContent  = currentLang === 'en' ? '✓ Sent! We\'ll be in touch.' : '✓ അയച്ചു! ഞങ്ങൾ ബന്ധപ്പെടും.';
       btn.style.background = '#16a34a';
       btn.disabled = true;
 
@@ -263,8 +263,8 @@
       if (formSuccess) {
         formSuccess.style.display = 'block';
         formSuccess.textContent = currentLang === 'en'
-          ? 'â Thank you! We\'ll be in touch soon.'
-          : 'â à´¨à´¨àµà´¦à´¿! à´à´àµà´àµ¾ à´à´àµ» à´¬à´¨àµà´§à´ªàµà´ªàµà´àµà´.';
+          ? '✅ Thank you! We\'ll be in touch soon.'
+          : '✅ നന്ദി! ഞങ്ങൾ ഉടൻ ബന്ധപ്പെടും.';
       }
 
       setTimeout(() => {
@@ -278,10 +278,10 @@
   }
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
+  /* ═══════════════════════════════════════
      IMAGE ERROR HANDLING
      Gracefully hide broken images
-  âââââââââââââââââââââââââââââââââââââââ */
+  ═══════════════════════════════════════ */
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', function () {
       this.style.display = 'none';
@@ -304,9 +304,9 @@
   });
 
 
-  /* âââââââââââââââââââââââââââââââââââââââ
+  /* ═══════════════════════════════════════
      ORBIT ANIMATION PAUSE on hover
-  âââââââââââââââââââââââââââââââââââââââ */
+  ═══════════════════════════════════════ */
   document.querySelectorAll('.orbit').forEach(orbit => {
     orbit.addEventListener('mouseenter', () => {
       orbit.style.animationPlayState = 'paused';
@@ -318,39 +318,36 @@
 
 
 
-  /* ═══════════════════════════════════════
-     CARD SHUFFLE ANIMATION
-  ═══════════════════════════════════════ */
+  /* Card Shuffle Animation */
   (function () {
-    const stack = document.querySelector('.about-card-stack');
+    var stack = document.querySelector('.about-card-stack');
     if (!stack) return;
-    const cards = [
+    var cards = [
       stack.querySelector('.card-1'),
       stack.querySelector('.card-2'),
       stack.querySelector('.card-3'),
     ];
-    let order = [2, 0, 1];
+    var order = [2, 0, 1];
 
     function shuffle() {
-      const [front, mid, back] = order;
+      var front = order[0], mid = order[1], back = order[2];
       cards[front].classList.add('card-shuffle-out');
-      setTimeout(() => {
-        cards.forEach(c =>
-          c.classList.remove('card-shuffle-out', 'card-shuffle-in', 'card-shuffle-back')
-        );
+      setTimeout(function() {
+        cards.forEach(function(c) {
+          c.classList.remove('card-shuffle-out', 'card-shuffle-in', 'card-shuffle-back');
+        });
         order = [mid, back, front];
         applyLayout();
       }, 1100);
     }
 
     function applyLayout() {
-      const [front, mid] = order;
-      cards.forEach(c => { c.style.zIndex = ''; });
+      var front = order[0], mid = order[1];
+      cards.forEach(function(c) { c.style.zIndex = ''; });
       cards[front].classList.add('card-shuffle-in');
       cards[mid].classList.add('card-shuffle-back');
     }
 
-    // Continuous loop — never stops
     setInterval(shuffle, 4000);
   })();
 
