@@ -1342,4 +1342,51 @@ h3 { font-size: 1.2rem; font-weight: 700; color: var(--gray-900); }
   .gallery-section { padding: 72px 0; }
 }
 
-@media (max-width: 480px) {}
+/* ═══════════════════════════════════════════════
+   MOBILE GALLERY — fix video overlap & alignment
+═══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+
+  /* Reset explicit column/row placement — let grid auto-flow stack items */
+  .gallery-main,
+  .gallery-short {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .gallery-main .video-wrap,
+  .video-wrap.video-shorts {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    min-height: unset;
+  }
+
+  .gallery-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-caption { padding: 16px 18px; }
+  .gallery-caption h3 { font-size: 0.95rem; }
+  .gallery-caption p  { font-size: 0.82rem; }
+}
+
+@media (max-width: 480px) {
+  .gallery-section { padding: 56px 0; }
+
+  .gallery-main .video-wrap,
+  .video-wrap.video-shorts {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .gallery-caption { padding: 14px 16px; }
+  .gallery-caption h3 { font-size: 0.9rem; }
+  .gallery-badge { font-size: 0.62rem; padding: 3px 8px; }
+}
