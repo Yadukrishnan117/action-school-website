@@ -852,68 +852,59 @@ h3 { font-size: 1.2rem; font-weight: 700; color: var(--gray-900); }
   padding-top: 8px;
 }
 
-.kerala-map-placeholder {
-  width: 260px; height: 420px;
-  background: linear-gradient(180deg, var(--blue-100) 0%, #d4e9f9 100%);
-  border-radius: 40% 40% 50% 50% / 20% 20% 30% 30%;
-  position: relative;
-  border: 2px solid var(--blue-200);
-  box-shadow: var(--shadow-lg);
+/* Kerala SVG Map */
+.kerala-map-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
   flex-shrink: 0;
 }
-
-.map-dot {
-  position: absolute;
-  width: 14px; height: 14px;
-  background: var(--gray-300);
-  border: 2px solid var(--white);
-  border-radius: 50%;
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
+.kerala-svg {
+  width: 220px;
+  height: auto;
+  border-radius: 12px;
+  filter: drop-shadow(0 8px 28px rgba(30,111,192,0.22));
 }
-.map-dot.active {
-  background: var(--blue-500);
-  animation: pulse 2s infinite;
+.kerala-state {
+  stroke: #93c5fd;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
 }
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(30,111,192,.4); }
-  50%       { box-shadow: 0 0 0 8px rgba(30,111,192,0); }
+.kerala-ghats {
+  fill: none;
+  stroke: #6ea8d0;
+  stroke-width: 0.8;
+  stroke-dasharray: 3 3;
+  opacity: 0.5;
 }
-.dot-label {
-  position: absolute;
-  left: 22px; top: -4px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--gray-700);
-  white-space: nowrap;
-  background: var(--white);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow-sm);
-  z-index: 5;
+.kerala-coast {
+  fill: none;
+  stroke: #60a5fa;
+  stroke-width: 1;
+  opacity: 0.6;
 }
-
-.map-label {
-  position: absolute;
-  bottom: 24px; left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+.city-dot {
+  fill: #3b82f6;
+  stroke: white;
+  stroke-width: 1.5;
+  cursor: default;
 }
-.map-title {
-  display: block;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--blue-700);
-}
-.map-sub {
-  display: block;
-  font-size: 0.72rem;
+.city-dot.major { fill: #1d4ed8; }
+.city-dot.active-city { fill: #f97316; stroke: white; stroke-width: 2; }
+.city-label {
+  font-size: 8.5px;
+  font-family: 'Inter', 'Outfit', system-ui, sans-serif;
+  fill: #1e3a5f;
   font-weight: 600;
-  color: var(--blue-500);
-  text-transform: uppercase;
-  letter-spacing: .06em;
 }
+.city-label.major-label { font-size: 9.5px; fill: #1e40af; font-weight: 700; }
+.city-label.anchor-end { text-anchor: end; }
+.city-label.active-city-label { font-size: 10px; fill: #c2410c; font-weight: 800; }
+.city-label.active-city-sub { font-size: 8px; fill: #f97316; font-weight: 700; }
+.map-caption { text-align: center; line-height: 1.4; }
+.map-caption-title { display: block; font-size: 1rem; font-weight: 800; color: var(--blue-700); }
+.map-caption-sub { display: block; font-size: 0.72rem; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: .08em; }
 
 /* ═══════════════════════════════════════════════
    CONTACT
@@ -1136,7 +1127,7 @@ h3 { font-size: 1.2rem; font-weight: 700; color: var(--gray-900); }
   /* Aero */
   .aero-inner { grid-template-columns: 1fr; gap: 40px; }
   .aero-map { order: -1; }
-  .kerala-map-placeholder { width: 200px; height: 320px; }
+  .kerala-svg { width: 180px; }
 
   /* Contact */
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
