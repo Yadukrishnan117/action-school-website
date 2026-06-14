@@ -1,0 +1,4 @@
+Contact: mailto:info@actionschool.in
+Expires: 2027-06-14T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://actionschool.in/.well-known/security.txt
