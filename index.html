@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── Security Headers ───────────────────────────────────────────── -->
+  <!-- Content Security Policy: restrict resource origins -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self';
+                 style-src 'self' https://fonts.googleapis.com;
+                 font-src 'self' https://fonts.gstatic.com;
+                 img-src 'self' data:;
+                 media-src 'self';
+                 connect-src 'self';
+                 frame-ancestors 'none';
+                 base-uri 'self';
+                 form-action 'self';" />
+  <!-- Prevent clickjacking -->
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <!-- Stop browser from MIME-sniffing -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <!-- Control referrer information sent to external sites -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Restrict browser features -->
+  <meta http-equiv="Permissions-Policy"
+        content="geolocation=(), microphone=(), camera=(), payment=(), usb=()" />
+  <!-- Force HTTPS for 1 year -->
+  <meta http-equiv="Strict-Transport-Security"
+        content="max-age=31536000; includeSubDomains" />
+  <!-- ─────────────────────────────────────────────────────────────── -->
+
   <title>Action School — Sport Flying Kerala</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -22,22 +50,18 @@
 
       <nav id="main-nav">
         <ul>
-          <li><a href="#home"       data-en="Home"             data-ml="ഹോം">Home</a></li>
-          <li><a href="#about"      data-en="About Us"         data-ml="ഞങ്ങളെക്കുറിച്ച്">About Us</a></li>
-          <li><a href="#activities" data-en="Flying Activities" data-ml="ഫ്ലൈയിംഗ്">Flying Activities</a></li>
-          <li><a href="#gallery"    data-en="Gallery"          data-ml="ഗ്യാലറി">Gallery</a></li>
-          <li><a href="#youth"      data-en="Youth Initiative"  data-ml="യൂത്ത്">Youth Initiative</a></li>
-          <li><a href="#partners"   data-en="Partners"         data-ml="പങ്കാളികൾ">Partners</a></li>
-          <li><a href="#contact"    data-en="Contact Us"       data-ml="ബന്ധപ്പെടുക">Contact Us</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#activities">Flying Activities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#youth">Youth Initiative</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <button id="lang-toggle" class="btn btn-outline btn-sm" aria-label="Toggle language">
-          <span id="lang-label">മലയാളം</span>
-        </button>
-        <a href="#contact" class="btn btn-primary"
-           data-en="Fly With Us" data-ml="ഞങ്ങളോടൊപ്പം പറക്കൂ">Fly With Us</a>
+        <a href="#contact" class="btn btn-primary">Fly With Us</a>
         <button id="menu-toggle" class="hamburger" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
@@ -71,43 +95,37 @@
 
     <!-- Content -->
     <div class="container hero-content">
-      <div class="hero-badge" data-en="🇮🇳 Kerala's First Sport Flying School" data-ml="🇮🇳 കേരളത്തിലെ ആദ്യ സ്‌പോർട്ട് ഫ്ലൈയിംഗ് സ്‌കൂൾ">
+      <div class="hero-badge">
         🇮🇳 Kerala's First Sport Flying School
       </div>
 
-      <h1 class="hero-headline"
-          data-en='Experiencing the Real <span class="accent">"High"</span>'
-          data-ml='യഥാർത്ഥ <span class="accent">"ഉയർച്ച"</span> അനുഭവിക്കൂ'>
+      <h1 class="hero-headline">
         Experiencing the Real <span class="accent">"High"</span>
       </h1>
 
-      <p class="hero-sub"
-         data-en="Introducing Sport Flying to Kerala. From Paramotors to Ultra-Light Aircraft, Action School is bringing world-class aviation to the youth of Kerala. It's time to chase dreams, not distractions."
-         data-ml="കേരളത്തിലേക്ക് സ്‌പോർട്ട് ഫ്ലൈയിംഗ് കൊണ്ടുവരുന്നു. പാരാമോട്ടോർ മുതൽ അൾട്രാ-ലൈറ്റ് വിമാനങ്ങൾ വരെ — Action School കേരളത്തിലെ യുവതലമുറക്ക് ആകാശം തുറന്നുകൊടുക്കുന്നു.">
+      <p class="hero-sub">
         Introducing Sport Flying to Kerala. From Paramotors to Ultra-Light Aircraft, Action School is bringing world-class aviation to the youth of Kerala. It's time to chase dreams, not distractions.
       </p>
 
       <div class="hero-cta">
-        <a href="#activities" class="btn btn-primary btn-lg"
-           data-en="Explore Activities" data-ml="പ്രവർത്തനങ്ങൾ കാണുക">Explore Activities</a>
-        <a href="#gallery" class="btn btn-ghost btn-lg"
-           data-en="Watch Us Fly" data-ml="ഞങ്ങൾ പറക്കുന്നത് കാണൂ">Watch Us Fly</a>
+        <a href="#activities" class="btn btn-primary btn-lg">Explore Activities</a>
+        <a href="#gallery" class="btn btn-ghost btn-lg">Watch Us Fly</a>
       </div>
 
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">3+</span>
-          <span class="stat-label" data-en="Aircraft Types" data-ml="വിമാന തരങ്ങൾ">Aircraft Types</span>
+          <span class="stat-label">Aircraft Types</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-num">100%</span>
-          <span class="stat-label" data-en="Safety First" data-ml="സുരക്ഷ ഒന്നാമത്">Safety First</span>
+          <span class="stat-label">Safety First</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-num">∞</span>
-          <span class="stat-label" data-en="Sky's the Limit" data-ml="ആകാശം അതിർത്തി">Sky's the Limit</span>
+          <span class="stat-label">Sky's the Limit</span>
         </div>
       </div>
     </div>
@@ -139,53 +157,51 @@
             <div class="about-img-card card-1">
               <div class="img-placeholder">
                 <span class="plane-icon">🪂</span>
-                <p data-en="Paramotor Flying" data-ml="പാരാമോട്ടോർ">Paramotor Flying</p>
+                <p>Paramotor Flying</p>
               </div>
             </div>
             <div class="about-img-card card-2">
               <div class="img-placeholder">
                 <span class="plane-icon">✈</span>
-                <p data-en="Ultra-Light Aircraft" data-ml="അൾട്രാ-ലൈറ്റ്">Ultra-Light Aircraft</p>
+                <p>Ultra-Light Aircraft</p>
               </div>
             </div>
             <div class="about-img-card card-3">
               <div class="img-placeholder">
                 <span class="plane-icon">🚁</span>
-                <p data-en="Gyrocopter" data-ml="ഗൈറോകോപ്ടർ">Gyrocopter</p>
+                <p>Gyrocopter</p>
               </div>
             </div>
             <div class="location-badge">
               <span>📍</span>
-              <span data-en="Thiruvananthapuram, Kerala" data-ml="തിരുവനന്തപുരം, കേരളം">Thiruvananthapuram, Kerala</span>
+              <span>Thiruvananthapuram, Kerala</span>
             </div>
           </div>
         </div>
 
         <div class="about-content reveal">
-          <div class="section-tag" data-en="Our Mission" data-ml="ഞങ്ങളുടെ ദൗത്യം">Our Mission</div>
-          <h2 data-en="Flying High,<br>Staying Grounded." data-ml="ഉയർന്നു പറക്കുക,<br>നിലത്തുറച്ചു നിൽക്കുക.">
+          <div class="section-tag">Our Mission</div>
+          <h2>
             Flying High,<br>Staying Grounded.
           </h2>
-          <p data-en="Based in Thiruvananthapuram, <strong>Action School</strong> is more than just a flying club — it is a mission to transform the energy of Kerala's youth."
-             data-ml="തിരുവനന്തപുരം ആസ്ഥാനമായി പ്രവർത്തിക്കുന്ന <strong>Action School</strong> ഒരു ഫ്ലൈയിംഗ് ക്ലബ്ബ് മാത്രമല്ല — ഇത് കേരളത്തിലെ യുവതലമുറയുടെ ഊർജ്ജത്തെ രൂപാന്തരപ്പെടുത്താനുള്ള ദൗത്യമാണ്.">
+          <p>
             Based in Thiruvananthapuram, <strong>Action School</strong> is more than just a flying club — it is a mission to transform the energy of Kerala's youth.
           </p>
-          <p data-en="Today, our youngsters often fall prey to negative influences and drugs simply due to a lack of thrilling, constructive opportunities. We want to change that. By bringing aviation to their doorstep, we provide an adrenaline-pumping, disciplined, and rewarding alternative that opens up global horizons."
-             data-ml="ഇന്ന്, ആവേശകരവും ക്രിയാത്മകവുമായ അവസരങ്ങൾ ഇല്ലാതെ നമ്മുടെ യുവാക്കൾ പലപ്പോഴും ലഹരിക്കും നിഷേധാത്മക സ്വാധീനങ്ങൾക്കും ഇരയാകുന്നു. ആ പ്രശ്നം ഞങ്ങൾ മാറ്റും.">
+          <p>
             Today, our youngsters often fall prey to negative influences and drugs simply due to a lack of thrilling, constructive opportunities. We want to change that. By bringing aviation to their doorstep, we provide an adrenaline-pumping, disciplined, and rewarding alternative that opens up global horizons.
           </p>
           <div class="about-pillars">
             <div class="pillar">
               <span class="pillar-icon">🎯</span>
-              <span data-en="Purpose-Driven" data-ml="ലക്ഷ്യബോധം">Purpose-Driven</span>
+              <span>Purpose-Driven</span>
             </div>
             <div class="pillar">
               <span class="pillar-icon">🛡️</span>
-              <span data-en="Safety Certified" data-ml="സുരക്ഷ ഉറപ്പ്">Safety Certified</span>
+              <span>Safety Certified</span>
             </div>
             <div class="pillar">
               <span class="pillar-icon">🌏</span>
-              <span data-en="Global Standards" data-ml="ആഗോള നിലവാരം">Global Standards</span>
+              <span>Global Standards</span>
             </div>
           </div>
         </div>
@@ -200,9 +216,9 @@
   <section id="activities" class="section activities-section">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag" data-en="What We Offer" data-ml="ഞങ്ങൾ നൽകുന്നത്">What We Offer</div>
-        <h2 data-en="Choose Your Sky" data-ml="നിങ്ങളുടെ ആകാശം തിരഞ്ഞെടുക്കൂ">Choose Your Sky</h2>
-        <p data-en="A glimpse of what we're bringing to the skies of Kerala" data-ml="കേരളത്തിന്റെ ആകാശത്തിലേക്ക് ഞങ്ങൾ കൊണ്ടുവരുന്നവ">
+        <div class="section-tag">What We Offer</div>
+        <h2>Choose Your Sky</h2>
+        <p>
           A glimpse of what we're bringing to the skies of Kerala
         </p>
       </div>
@@ -214,15 +230,14 @@
             <span class="activity-icon">✈</span>
           </div>
           <div class="activity-content">
-            <div class="activity-badge" data-en="Most Popular" data-ml="ഏറ്റവും ജനപ്രിയം">Most Popular</div>
-            <h3 data-en="Ultra-Light Aircraft" data-ml="അൾട്രാ-ലൈറ്റ് വിമാനം">Ultra-Light Aircraft</h3>
-            <p data-en="Experience the thrill of piloting a real, lightweight airplane under expert supervision. Feel the controls in your hands and the sky beneath your wings."
-               data-ml="വിദഗ്ധ മേൽനോട്ടത്തിൽ ഒരു യഥാർത്ഥ ലൈറ്റ്‌വെയ്റ്റ് വിമാനം പൈലറ്റ് ചെയ്യുന്നതിന്റെ ആവേശം അനുഭവിക്കൂ.">
+            <div class="activity-badge">Most Popular</div>
+            <h3>Ultra-Light Aircraft</h3>
+            <p>
               Experience the thrill of piloting a real, lightweight airplane under expert supervision. Feel the controls in your hands and the sky beneath your wings.
             </p>
             <div class="activity-tags">
-              <span data-en="Aspiring Pilots" data-ml="പൈലറ്റ് ആഗ്രഹിക്കുന്നവർ">Aspiring Pilots</span>
-              <span data-en="Hobbyists" data-ml="ഹോബിസ്റ്റുകൾ">Hobbyists</span>
+              <span>Aspiring Pilots</span>
+              <span>Hobbyists</span>
             </div>
           </div>
         </div>
@@ -232,14 +247,13 @@
             <span class="activity-icon">🪂</span>
           </div>
           <div class="activity-content">
-            <h3 data-en="Paramotors" data-ml="പാരാമോട്ടോർ">Paramotors</h3>
-            <p data-en="The simplest form of powered aviation — fly free like a bird over Kerala's coastlines, backwaters, and breathtaking landscapes."
-               data-ml="ഏറ്റവും ലളിതമായ ശക്തി-ഉള്ള ഏവിയേഷൻ — കേരളത്തിന്റെ കടൽത്തീരങ്ങൾക്കും കായലുകൾക്കും മുകളിൽ ഒരു പക്ഷിയെ പോലെ സ്വതന്ത്രമായി പറക്കൂ.">
+            <h3>Paramotors</h3>
+            <p>
               The simplest form of powered aviation — fly free like a bird over Kerala's coastlines, backwaters, and breathtaking landscapes.
             </p>
             <div class="activity-tags">
-              <span data-en="Adventure Enthusiasts" data-ml="സാഹസിക പ്രേമികൾ">Adventure Enthusiasts</span>
-              <span data-en="Youth" data-ml="യുവത">Youth</span>
+              <span>Adventure Enthusiasts</span>
+              <span>Youth</span>
             </div>
           </div>
         </div>
@@ -249,14 +263,13 @@
             <span class="activity-icon">🚁</span>
           </div>
           <div class="activity-content">
-            <h3 data-en="Gyrocopter Flying" data-ml="ഗൈറോകോപ്ടർ ഫ്ലൈയിംഗ്">Gyrocopter Flying</h3>
-            <p data-en="Fast, agile, and incredibly safe open-cockpit flying machines. Get a bird's-eye view of God's Own Country like never before."
-               data-ml="വേഗമേറിയതും ചുറുചുറുക്കുള്ളതും അതീവ സുരക്ഷിതവുമായ ഓപ്പൺ-കോക്ക്‌പിറ്റ് ഫ്ലൈയിംഗ് മെഷീൻ. ദൈവത്തിന്റെ സ്വന്തം നാടിന്റെ ആകാശദൃശ്യം ആസ്വദിക്കൂ.">
+            <h3>Gyrocopter Flying</h3>
+            <p>
               Fast, agile, and incredibly safe open-cockpit flying machines. Get a bird's-eye view of God's Own Country like never before.
             </p>
             <div class="activity-tags">
-              <span data-en="Tourists" data-ml="ടൂറിസ്റ്റുകൾ">Tourists</span>
-              <span data-en="Aerial Explorers" data-ml="ആകാശ ഗവേഷകർ">Aerial Explorers</span>
+              <span>Tourists</span>
+              <span>Aerial Explorers</span>
             </div>
           </div>
         </div>
@@ -264,8 +277,7 @@
       </div>
 
       <div class="activities-cta reveal">
-        <a href="#contact" class="btn btn-primary btn-lg"
-           data-en="Enquire About a Flight" data-ml="ഒരു ഫ്ലൈറ്റ് അന്വേഷിക്കൂ">Enquire About a Flight</a>
+        <a href="#contact" class="btn btn-primary btn-lg">Enquire About a Flight</a>
       </div>
     </div>
   </section>
@@ -277,10 +289,9 @@
   <section id="gallery" class="section gallery-section">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag" data-en="In Action" data-ml="പ്രവർത്തനത്തിൽ">In Action</div>
-        <h2 data-en="Watch Kerala Fly" data-ml="കേരളം പറക്കുന്നത് കാണൂ">Watch Kerala Fly</h2>
-        <p data-en="Real flights, real thrills — straight from the skies of Kerala"
-           data-ml="യഥാർത്ഥ ഫ്ലൈറ്റുകൾ, യഥാർത്ഥ ആവേശം — കേരളത്തിന്റെ ആകാശത്തിൽ നിന്ന് നേരിട്ട്">
+        <div class="section-tag">In Action</div>
+        <h2>Watch Kerala Fly</h2>
+        <p>
           Real flights, real thrills — straight from the skies of Kerala
         </p>
       </div>
@@ -301,9 +312,8 @@
           </div>
           <div class="gallery-caption">
             <span class="gallery-badge">🎬 Featured Flight</span>
-            <h3 data-en="Sport Flying Over Kerala" data-ml="കേരളത്തിലെ സ്‌പോർട്ട് ഫ്ലൈയിംഗ്">Sport Flying Over Kerala</h3>
-            <p data-en="Watch our pilots soar over Kerala's iconic landscapes — backwaters, beaches, and beyond."
-               data-ml="കേരളത്തിന്റെ ഭൂപ്രകൃതിക്ക് മുകളിൽ ഞങ്ങളുടെ പൈലറ്റുകൾ പറക്കുന്നത് കാണൂ.">
+            <h3>Sport Flying Over Kerala</h3>
+            <p>
               Watch our pilots soar over Kerala's iconic landscapes — backwaters, beaches, and beyond.
             </p>
           </div>
@@ -323,9 +333,8 @@
           </div>
           <div class="gallery-caption">
             <span class="gallery-badge shorts-badge">⚡ Short Clip</span>
-            <h3 data-en="Quick Thrills" data-ml="ദ്രുത ആവേശം">Quick Thrills</h3>
-            <p data-en="A quick taste of what flying feels like — pure freedom above God's Own Country."
-               data-ml="പറക്കൽ എങ്ങനെ അനുഭവപ്പെടുന്നു എന്ന് ഒരു ഹ്രസ്വ നോട്ടം.">
+            <h3>Quick Thrills</h3>
+            <p>
               A quick taste of what flying feels like — pure freedom above God's Own Country.
             </p>
           </div>
@@ -344,34 +353,32 @@
     <div class="container">
       <div class="youth-inner">
         <div class="youth-text reveal">
-          <div class="section-tag" data-en="Youth Initiative" data-ml="യൂത്ത് ഇനിഷ്യേറ്റീവ്">Youth Initiative</div>
-          <h2 data-en="Give Youth a Reason to Look Up" data-ml="യുവതലമുറക്ക് ഉയരം നോക്കാൻ ഒരു കാരണം നൽകൂ">
+          <div class="section-tag">Youth Initiative</div>
+          <h2>
             Give Youth a Reason to Look Up
           </h2>
-          <p data-en="Kerala's youth deserve more than Netflix and Instagram. They deserve an adrenaline rush that builds character, discipline, and a career. Aviation is not just a sport — it's a life skill."
-             data-ml="കേരളത്തിലെ യുവതലമുറ Netflix-ഉം Instagram-ഉം അർഹിക്കുന്നില്ല — അവർ സ്വഭാവം, അച്ചടക്കം, ഒരു ജീവിതമാർഗ്ഗം ഇവ കെട്ടിപ്പടുക്കുന്ന ഒരു ആദ്രനാലിൻ റഷ് അർഹിക്കുന്നു.">
+          <p>
             Kerala's youth deserve more than Netflix and Instagram. They deserve an adrenaline rush that builds character, discipline, and a career. Aviation is not just a sport — it's a life skill.
           </p>
           <ul class="youth-benefits">
             <li>
               <span class="check">✓</span>
-              <span data-en="Real-world technical skills & aeronautical knowledge" data-ml="യഥാർത്ഥ സാങ്കേതിക കഴിവുകൾ & വൈമാനിക അറിവ്">Real-world technical skills &amp; aeronautical knowledge</span>
+              <span>Real-world technical skills &amp; aeronautical knowledge</span>
             </li>
             <li>
               <span class="check">✓</span>
-              <span data-en="Discipline, focus, and goal-oriented mindset" data-ml="അച്ചടക്കം, ശ്രദ്ധ, ലക്ഷ്യബോധം">Discipline, focus, and goal-oriented mindset</span>
+              <span>Discipline, focus, and goal-oriented mindset</span>
             </li>
             <li>
               <span class="check">✓</span>
-              <span data-en="Pathway to international pilot licenses" data-ml="അന്തർദ്ദേശീയ പൈലറ്റ് ലൈസൻസിലേക്കുള്ള വഴി">Pathway to international pilot licenses</span>
+              <span>Pathway to international pilot licenses</span>
             </li>
             <li>
               <span class="check">✓</span>
-              <span data-en="A community of like-minded dreamers" data-ml="സ്വപ്നക്കാരുടെ ഒരു കൂട്ടായ്മ">A community of like-minded dreamers</span>
+              <span>A community of like-minded dreamers</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-primary"
-             data-en="Register Your Interest" data-ml="നിങ്ങളുടെ താൽപ്പര്യം രജിസ്റ്റർ ചെയ്യൂ">Register Your Interest</a>
+          <a href="#contact" class="btn btn-primary">Register Your Interest</a>
         </div>
 
         <div class="youth-visual reveal">
@@ -387,9 +394,9 @@
                 <div class="orbit-dot"><span>🚁</span></div>
               </div>
               <div class="sky-center">
-                <span class="sky-text" data-en="FLY" data-ml="പറക്കൂ">FLY</span>
-                <span class="sky-sub" data-en="DREAM" data-ml="സ്വപ്നം">DREAM</span>
-                <span class="sky-sub2" data-en="ACHIEVE" data-ml="നേടൂ">ACHIEVE</span>
+                <span class="sky-text">FLY</span>
+                <span class="sky-sub">DREAM</span>
+                <span class="sky-sub2">ACHIEVE</span>
               </div>
             </div>
           </div>
@@ -405,8 +412,8 @@
   <section id="partners" class="section partners-section">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag" data-en="Our Ecosystem" data-ml="ഞങ്ങളുടെ ഇക്കോസിസ്റ്റം">Our Ecosystem</div>
-        <h2 data-en="Backed by Innovation,<br>Driven by Experts." data-ml="നൂതനാശയങ്ങൾ കൊണ്ട് ശക്തിപ്പെടുത്തി,<br>വിദഗ്ധർ നയിക്കുന്നു.">
+        <div class="section-tag">Our Ecosystem</div>
+        <h2>
           Backed by Innovation,<br>Driven by Experts.
         </h2>
       </div>
@@ -414,28 +421,25 @@
       <div class="partners-grid">
         <div class="partner-card reveal">
           <div class="partner-icon">👨‍✈️</div>
-          <h3 data-en="Expert Pilots & Trainers" data-ml="വിദഗ്ധ പൈലറ്റുകളും ട്രെയിനർമാരും">Expert Pilots &amp; Trainers</h3>
-          <p data-en="Our team consists of seasoned aviators and international-grade trainers ensuring 100% safety on every flight."
-             data-ml="ഓരോ ഫ്ലൈറ്റിലും 100% സുരക്ഷ ഉറപ്പുനൽകുന്ന പരിചയ സമ്പന്നരായ വൈമാനികരും അന്തർദ്ദേശീയ നിലവാരമുള്ള ട്രെയിനർമാരും ഞങ്ങളുടെ ടീമിലുണ്ട്.">
+          <h3>Expert Pilots &amp; Trainers</h3>
+          <p>
             Our team consists of seasoned aviators and international-grade trainers ensuring 100% safety on every flight.
           </p>
         </div>
 
         <div class="partner-card reveal featured-partner">
-          <div class="partner-badge" data-en="Our Advantage" data-ml="ഞങ്ങളുടെ മുൻതൂക്കം">Our Advantage</div>
+          <div class="partner-badge">Our Advantage</div>
           <div class="partner-icon">✈️</div>
-          <h3 data-en="Experience & Excellence" data-ml="അനുഭവവും മികവും">Experience & Excellence</h3>
-          <p data-en="With years of hands-on aviation experience, Action School brings world-class training, certified instructors, and a proven safety record — empowering Kerala's youth to soar with confidence."
-             data-ml="വർഷങ്ങളുടെ ഏവിയേഷൻ അനുഭവത്തോടെ, ആക്ഷൻ സ്കൂൾ ലോകോത്തര പരിശീലനവും സർട്ടിഫൈഡ് പരിശീലകരും മികച്ച സുരക്ഷാ റെക്കോർഡും നൽകുന്നു.">
+          <h3>Experience & Excellence</h3>
+          <p>
             With years of hands-on aviation experience, Action School brings world-class training, certified instructors, and a proven safety record — empowering Kerala's youth to soar with confidence.
           </p>
         </div>
 
         <div class="partner-card reveal">
           <div class="partner-icon">🏆</div>
-          <h3 data-en="Community Validation" data-ml="കമ്മ്യൂണിറ്റി അംഗീകാരം">Community Validation</h3>
-          <p data-en="Validated by experienced aviators and aviation communities across Kerala who share our vision of making sport flying accessible, safe, and transformative for the next generation."
-             data-ml="സ്പോർട്ട് ഫ്ലൈയിംഗ് സുരക്ഷിതവും ആക്സസ് ചെയ്യാവുന്നതും അടുത്ത തലമുറയ്ക്ക് പ്രചോദനകരവുമാക്കാനുള്ള ഞങ്ങളുടെ ദർശനം കേരളത്തിലുടനീളമുള്ള അനുഭവസമ്പന്നരായ ഏവിയേഷൻ കമ്മ്യൂണിറ്റികൾ അംഗീകരിക്കുന്നു.">
+          <h3>Community Validation</h3>
+          <p>
             Validated by experienced aviators and aviation communities across Kerala who share our vision of making sport flying accessible, safe, and transformative for the next generation.
           </p>
         </div>
@@ -451,25 +455,23 @@
     <div class="container">
       <div class="aero-inner">
         <div class="aero-text reveal">
-          <div class="section-tag" data-en="The Future" data-ml="ഭാവി">The Future</div>
-          <h2 data-en="Expanding Across Kerala" data-ml="കേരളം മുഴുവൻ വ്യാപിക്കുന്നു">Expanding Across Kerala</h2>
-          <p data-en="We are actively working towards establishing multiple Take-off and Landing Zones (Aero-Parks) across strategic locations in Kerala to support commercial low-speed flying and aviation tourism."
-             data-ml="കേരളത്തിൽ തന്ത്രപ്രധാനമായ സ്ഥലങ്ങളിൽ ഒന്നിലധികം ടേക്ക്-ഓഫ് ആൻഡ് ലാൻഡിംഗ് സോണുകൾ (ഏറോ-പാർക്കുകൾ) സ്ഥാപിക്കാൻ ഞങ്ങൾ സജീവമായി പ്രവർത്തിക്കുന്നു.">
+          <div class="section-tag">The Future</div>
+          <h2>Expanding Across Kerala</h2>
+          <p>
             We are actively working towards establishing multiple Take-off and Landing Zones (Aero-Parks) across strategic locations in Kerala to support commercial low-speed flying and aviation tourism.
           </p>
 
           <div class="aero-notice">
             <span class="notice-icon">📍</span>
-            <p data-en="Currently in discussions with the Kerala Startup Mission (KSUM) and government bodies for land allocation to make these aviation hubs a reality soon."
-               data-ml="ഈ ഏവിയേഷൻ ഹബ്ബുകൾ യാഥാർത്ഥ്യമാക്കാൻ കേരള സ്റ്റാർട്ടപ്പ് മിഷൻ (KSUM) ഉം സർ കാന്പിക്കായ ചർച്ചകൾ നടന്നുകൊണ്ടിരിക്കുന്നു.">
+            <p>
               Currently in discussions with the Kerala Startup Mission (KSUM) and government bodies for land allocation to make these aviation hubs a reality soon.
             </p>
           </div>
 
           <div class="aero-locations">
-            <div class="location-chip">📍 <span data-en="Thiruvananthapuram" data-ml="തിരുവനന്തപുരം">Thiruvananthapuram</span></div>
-            <div class="location-chip future">📍 <span data-en="Kochi (Coming Soon)" data-ml="കൊച്ചി (ഉടൻ)">Kochi (Coming Soon)</span></div>
-            <div class="location-chip future">📍 <span data-en="Kozhikode (Coming Soon)" data-ml="കോഴിക്കോട് (ഉടൻ)">Kozhikode (Coming Soon)</span></div>
+            <div class="location-chip">📍 <span>Thiruvananthapuram</span></div>
+            <div class="location-chip future">📍 <span>Kochi (Coming Soon)</span></div>
+            <div class="location-chip future">📍 <span>Kozhikode (Coming Soon)</span></div>
           </div>
         </div>
 
@@ -575,8 +577,8 @@
 
             <!-- Caption below map -->
             <div class="map-caption">
-              <span class="map-caption-title" data-en="Kerala" data-ml="കേരളം">Kerala</span>
-              <span class="map-caption-sub" data-en="✈ Aero-Park Expansion" data-ml="✈ ഏറോ-പാർ ക്യാപനം">✈ Aero-Park Expansion</span>
+              <span class="map-caption-title">Kerala</span>
+              <span class="map-caption-sub">✈ Aero-Park Expansion</span>
             </div>
           </div>
         </div>
@@ -592,10 +594,9 @@
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info reveal">
-          <div class="section-tag" data-en="Get In Touch" data-ml="ബന്ധപ്പെടൂ">Get In Touch</div>
-          <h2 data-en="Ready to Touch the Sky?" data-ml="ആകാശം തൊടാൻ തയ്യാറോ?">Ready to Touch the Sky?</h2>
-          <p data-en="Reach out to us and we'll get you flying in no time."
-             data-ml="ഞങ്ങളെ ബന്ധപ്പെടൂ, ഉടൻ തന്നെ ആകാശത്തേക്ക് കൊണ്ടുപോകും.">
+          <div class="section-tag">Get In Touch</div>
+          <h2>Ready to Touch the Sky?</h2>
+          <p>
             Reach out to us and we'll get you flying in no time.
           </p>
 
@@ -603,15 +604,15 @@
             <div class="contact-item">
               <span class="contact-icon">👤</span>
               <div>
-                <span class="contact-label" data-en="Contact Person" data-ml="ബന്ധപ്പെടേണ്ടയാൾ">Contact Person</span>
+                <span class="contact-label">Contact Person</span>
                 <span class="contact-value">Mr. Arjun</span>
               </div>
             </div>
             <div class="contact-item">
               <span class="contact-icon">📍</span>
               <div>
-                <span class="contact-label" data-en="Location" data-ml="സ്ഥലം">Location</span>
-                <span class="contact-value" data-en="Thiruvananthapuram, Kerala" data-ml="തിരുവനന്തപുരം, കേരളം">Thiruvananthapuram, Kerala</span>
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Thiruvananthapuram, Kerala</span>
               </div>
             </div>
             <div class="contact-item">
@@ -640,9 +641,9 @@
         </div>
 
         <form class="contact-form reveal" id="enquiry-form" novalidate>
-          <h3 data-en="Send an Enquiry" data-ml="ഒരു അന്വേഷണം അയക്കൂ">Send an Enquiry</h3>
+          <h3>Send an Enquiry</h3>
           <div class="form-group">
-            <label data-en="Your Name" data-ml="നിങ്ങളുടെ പേര്">Your Name</label>
+            <label>Your Name</label>
             <input type="text" name="name" placeholder="Arjun Kumar" required />
           </div>
           <div class="form-group">
@@ -650,23 +651,21 @@
             <input type="text" name="contact" placeholder="arjun@email.com or +91 9876543210" required />
           </div>
           <div class="form-group">
-            <label data-en="Activity of Interest" data-ml="ആഗ്രഹിക്കുന്ന പ്രവർത്തനം">Activity of Interest</label>
+            <label>Activity of Interest</label>
             <select name="activity">
-              <option value="" data-en="Select an activity..." data-ml="ഒരു പ്രവർത്തനം തിരഞ്ഞെടുക്കൂ...">Select an activity...</option>
-              <option data-en="Ultra-Light Aircraft" data-ml="അൾട്രാ-ലൈറ്റ്">Ultra-Light Aircraft</option>
-              <option data-en="Paramotor" data-ml="പാരാമോട്ടോർ">Paramotor</option>
-              <option data-en="Gyrocopter" data-ml="ഗൈറോകോപ്ടർ">Gyrocopter</option>
-              <option data-en="General Enquiry" data-ml="പൊതു അന്വേഷണം">General Enquiry</option>
+              <option value="">Select an activity...</option>
+              <option>Ultra-Light Aircraft</option>
+              <option>Paramotor</option>
+              <option>Gyrocopter</option>
+              <option>General Enquiry</option>
             </select>
           </div>
           <div class="form-group">
-            <label data-en="Message" data-ml="സന്ദേശം">Message</label>
+            <label>Message</label>
             <textarea name="message" rows="4" placeholder="Tell us about yourself and your flying dreams..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-full"
-                  data-en="Send Enquiry ✈" data-ml="അന്വേഷണം അയക്കൂ ✈">Send Enquiry ✈</button>
-          <p class="form-success" id="form-success" style="display:none;"
-             data-en="✅ Thank you! We'll be in touch soon." data-ml="✅ നന്ദി! ഞങ്ങൾ ഉടൻ ബന്ധപ്പെടും.">
+          <button type="submit" class="btn btn-primary btn-full">Send Enquiry ✈</button>
+          <p class="form-success" id="form-success" style="display:none;">
             ✅ Thank you! We'll be in touch soon.
           </p>
         </form>
@@ -685,31 +684,29 @@
           <span class="logo-icon">✈</span>
           <span class="logo-text">Action<strong>School</strong></span>
         </a>
-        <p data-en="Bringing aviation to the youth of Kerala. Chase dreams, not distractions."
-           data-ml="കേരളത്തിലെ യുവതലമുറക്ക് ഏവിയേഷൻ കൊണ്ടുവരുന്നു. സ്വപ്നങ്ങൾ പിന്തുടരൂ.">
+        <p>
           Bringing aviation to the youth of Kerala.<br>Chase dreams, not distractions.
         </p>
       </div>
       <div class="footer-links">
-        <h4 data-en="Quick Links" data-ml="ദ്രുത ലിങ്കുകൾ">Quick Links</h4>
+        <h4>Quick Links</h4>
         <ul>
-          <li><a href="#home"       data-en="Home"       data-ml="ഹോം">Home</a></li>
-          <li><a href="#about"      data-en="About Us"   data-ml="ഞങ്ങളെക്കുറിച്ച്">About Us</a></li>
-          <li><a href="#activities" data-en="Activities" data-ml="പ്രവർത്തനങ്ങൾ">Activities</a></li>
-          <li><a href="#gallery"    data-en="Gallery"    data-ml="ഗ്യാലറി">Gallery</a></li>
-          <li><a href="#contact"    data-en="Contact"    data-ml="ബന്ധപ്പെടുക">Contact</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-contact">
-        <h4 data-en="Contact" data-ml="ബന്ധം">Contact</h4>
+        <h4>Contact</h4>
         <p>Mr. Arjun</p>
-        <p data-en="Thiruvananthapuram, Kerala" data-ml="തിരുവനന്തപുരം, കേരളം">Thiruvananthapuram, Kerala</p>
+        <p>Thiruvananthapuram, Kerala</p>
         <a href="mailto:info@actionschool.in">info@actionschool.in</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p data-en="© 2025 Action School. All rights reserved. | Powered by chargeMOD"
-         data-ml="© 2025 Action School. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം. | chargeMOD-ൻ്റെ പിന്തുണയോടെ">
+      <p>
         © 2025 Action School. All rights reserved. | Powered by chargeMOD
       </p>
     </div>

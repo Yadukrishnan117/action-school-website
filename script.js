@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════
    ACTION SCHOOL — MAIN SCRIPT
    Features: Nav scroll, mobile menu,
-             language toggle (EN/ML),
              scroll reveal animations,
              hero video + sound toggle,
              form submission
@@ -11,15 +10,12 @@
   'use strict';
 
   /* ─── State ──────────────────────────── */
-  let currentLang = 'en';
   let videoMuted  = true;
 
   /* ─── DOM Refs ────────────────────────── */
   const header         = document.getElementById('site-header');
   const menuToggle     = document.getElementById('menu-toggle');
   const mainNav        = document.getElementById('main-nav');
-  const langToggle     = document.getElementById('lang-toggle');
-  const langLabel      = document.getElementById('lang-label');
   const form           = document.getElementById('enquiry-form');
   const heroVideo      = document.getElementById('hero-video');
   const soundBtn       = document.getElementById('video-sound-btn');
@@ -115,42 +111,6 @@
       document.body.style.overflow = '';
     }
   });
-
-
-  /* ═══════════════════════════════════════
-     LANGUAGE TOGGLE (EN ↔ ML)
-  ═══════════════════════════════════════ */
-  function applyLanguage(lang) {
-    const attr = `data-${lang}`;
-    document.querySelectorAll(`[${attr}]`).forEach(el => {
-      const value = el.getAttribute(attr);
-      if (!value) return;
-
-      // Use innerHTML for elements that can contain markup
-      if (
-        el.tagName === 'H1' ||
-        el.tagName === 'H2' ||
-        el.tagName === 'P'  ||
-        el.classList.contains('hero-badge') ||
-        el.classList.contains('hero-sub')
-      ) {
-        el.innerHTML = value;
-      } else {
-        el.textContent = value;
-      }
-    });
-
-    document.documentElement.lang = lang === 'ml' ? 'ml' : 'en';
-    langLabel.textContent = lang === 'en' ? 'മലയാളം' : 'English';
-    currentLang = lang;
-  }
-
-  langToggle.addEventListener('click', () => {
-    applyLanguage(currentLang === 'en' ? 'ml' : 'en');
-  });
-
-  // Run English on load
-  applyLanguage('en');
 
 
   /* ═══════════════════════════════════════
@@ -255,16 +215,14 @@
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
 
-      btn.textContent  = currentLang === 'en' ? '✓ Sent! We\'ll be in touch.' : '✓ അയച്ചു! ഞങ്ങൾ ബന്ധപ്പെടും.';
+      btn.textContent  = '✓ Sent! We\'ll be in touch.';
       btn.style.background = '#16a34a';
       btn.disabled = true;
 
       // Show success message
       if (formSuccess) {
         formSuccess.style.display = 'block';
-        formSuccess.textContent = currentLang === 'en'
-          ? '✅ Thank you! We\'ll be in touch soon.'
-          : '✅ നന്ദി! ഞങ്ങൾ ഉടൻ ബന്ധപ്പെടും.';
+        formSuccess.textContent = '✅ Thank you! We\'ll be in touch soon.';
       }
 
       setTimeout(() => {

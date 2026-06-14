@@ -1,0 +1,16 @@
+# robots.txt — Action School (actionschool.in)
+# Controls how search engine crawlers access this site.
+# Last updated: June 2026
+
+User-agent: *
+Allow: /
+Disallow: /videos/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /config*
+Disallow: /backup*
+Disallow: /admin/
+Disallow: /private/
+
+# Point search engines to the canonical sitemap
+Sitemap: https://actionschool.in/sitemap.xml
