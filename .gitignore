@@ -1,6 +1,52 @@
+# ─── Environment & Secrets ────────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets/
+config/local.*
+*.pem
+*.key
+*.cert
+*.p12
+
+# ─── Sensitive Backups ────────────────────────────────────────────────
+*.sql
+*.db
+*.sqlite
+backup/
+*.bak
+*.dump
+*.tar.gz
+*.zip
+
+# ─── OS Junk ──────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# ─── Editor Artifacts ─────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ─── Build / Node ─────────────────────────────────────────────────────
+node_modules/
+dist/
+build/
+.cache/
+*.log
+
+# ─── Private / Internal Docs ──────────────────────────────────────────
+private/
+internal/
+drafts/
 html_content
 index-react.html
-ActionSchool_Testing_Report.pdf
+ActionSchool_*.pdf
+ActionSchool_*.docx
+chunk*.txt
+push_payload.json
+
+# ─── Python scripts (not part of site) ───────────────────────────────
 *.py

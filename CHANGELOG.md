@@ -5,6 +5,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.2] — 2026-07-20 · Working Enquiry Form, SEO & Test-Report Fixes
+
+### ✅ Added
+- **Enquiry form now actually sends** — wired to FormSubmit.co AJAX endpoint delivering to `info@actionschool.in`. ⚠️ One-time step: the first submission triggers an activation email to info@actionschool.in — click the confirmation link in it, after which all enquiries are delivered.
+- **Spam honeypot** — hidden `_honey` field silently drops bot submissions
+- **Client-side validation** — name and email/phone required before send; clear error message shown if sending fails (with email/WhatsApp fallback hint)
+- **SEO meta description** — resolves QA report "RECOMMENDED" item
+- **Open Graph + Twitter card tags & canonical URL** — better link previews when shared on WhatsApp/Instagram/Facebook
+
+### 🔧 Fixed
+- **Gallery selector mismatch (UAT FAIL)** — removed dead code in `script.js` referencing elements deleted in earlier releases (`#hero-fallback-img`, `.strip-img`, `.hero-image-strip`, `.gallery-img`, `.gallery-photo`)
+- **CSP updated** — `connect-src` now allows `https://formsubmit.co` (required for form delivery); all other policies unchanged
+- Cache-bust query bumped to `?v=1.3.2` for script.js
+
+---
+
 ## [1.3.0] — 2026-06-15 · Remove Malayalam Language Toggle
 
 ### 🗑️ Removed

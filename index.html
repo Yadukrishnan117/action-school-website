@@ -13,7 +13,7 @@
                  font-src 'self' https://fonts.gstatic.com;
                  img-src 'self' data:;
                  media-src 'self';
-                 connect-src 'self';
+                 connect-src 'self' https://formsubmit.co;
                  frame-ancestors 'none';
                  base-uri 'self';
                  form-action 'self';" />
@@ -32,6 +32,20 @@
   <!-- ─────────────────────────────────────────────────────────────── -->
 
   <title>Action School — Sport Flying Kerala</title>
+
+  <!-- ── SEO & Social ──────────────────────────────────────────────── -->
+  <meta name="description" content="Action School brings sport flying to Kerala — paramotors, gyrocopters and ultra-light aircraft in Thiruvananthapuram. Training, joyrides and a youth aviation movement." />
+  <link rel="canonical" href="https://actionschool.in/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Action School" />
+  <meta property="og:title" content="Action School — Sport Flying Kerala" />
+  <meta property="og:description" content="Paramotors, gyrocopters and ultra-light aircraft in Kerala. Chase dreams, not distractions." />
+  <meta property="og:url" content="https://actionschool.in/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Action School — Sport Flying Kerala" />
+  <meta name="twitter:description" content="Paramotors, gyrocopters and ultra-light aircraft in Kerala. Chase dreams, not distractions." />
+  <!-- ─────────────────────────────────────────────────────────────── -->
+
   <link rel="stylesheet" href="style.css?v=1.3.1" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -642,6 +656,8 @@
 
         <form class="contact-form reveal" id="enquiry-form" novalidate>
           <h3>Send an Enquiry</h3>
+          <!-- Honeypot — hidden from humans, catches spam bots -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="form-group">
             <label>Your Name</label>
             <input type="text" name="name" placeholder="Arjun Kumar" required />
@@ -712,6 +728,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=1.3.1"></script>
+  <script src="script.js?v=1.3.2"></script>
 </body>
 </html>

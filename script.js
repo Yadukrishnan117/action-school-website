@@ -209,29 +209,70 @@
   /* ═══════════════════════════════════════
      ENQUIRY FORM
   ═══════════════════════════════════════ */
+  // Submissions are delivered to info@actionschool.in via FormSubmit.co (AJAX endpoint).
+  // NOTE: the very first submission triggers a one-time activation email to
+  // info@actionschool.in — click the link in it to start receiving enquiries.
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@actionschool.in';
+
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
+      const data = new FormData(form);
 
-      btn.textContent  = '✓ Sent! We\'ll be in touch.';
-      btn.style.background = '#16a34a';
-      btn.disabled = true;
-
-      // Show success message
-      if (formSuccess) {
-        formSuccess.style.display = 'block';
-        formSuccess.textContent = '✅ Thank you! We\'ll be in touch soon.';
+      // Basic validation (form has novalidate)
+      if (!String(data.get('name') || '').trim() || !String(data.get('contact') || '').trim()) {
+        if (formSuccess) {
+          formSuccess.style.display = 'block';
+          formSuccess.textContent = '⚠️ Please fill in your name and email/phone.';
+        }
+        return;
       }
 
-      setTimeout(() => {
-        btn.textContent       = originalText;
-        btn.style.background  = '';
-        btn.disabled          = false;
-        if (formSuccess) formSuccess.style.display = 'none';
-        form.reset();
-      }, 5000);
+      // Honeypot filled → silently drop (bot)
+      if (String(data.get('_honey') || '').trim()) return;
+
+      data.append('_subject', 'New enquiry from actionschool.in');
+      data.append('_template', 'table');
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' },
+      })
+        .then(res => {
+          if (!res.ok) throw new Error('Request failed: ' + res.status);
+          return res.json();
+        })
+        .then(() => {
+          btn.textContent = '✓ Sent! We\'ll be in touch.';
+          btn.style.background = '#16a34a';
+          if (formSuccess) {
+            formSuccess.style.display = 'block';
+            formSuccess.textContent = '✅ Thank you! We\'ll be in touch soon.';
+          }
+          form.reset();
+        })
+        .catch(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+          if (formSuccess) {
+            formSuccess.style.display = 'block';
+            formSuccess.textContent = '⚠️ Could not send right now. Please email info@actionschool.in or use WhatsApp.';
+          }
+        })
+        .finally(() => {
+          setTimeout(() => {
+            btn.textContent      = originalText;
+            btn.style.background = '';
+            btn.disabled         = false;
+            if (formSuccess) formSuccess.style.display = 'none';
+          }, 6000);
+        });
     });
   }
 
@@ -240,24 +281,12 @@
      IMAGE ERROR HANDLING
      Gracefully hide broken images
   ═══════════════════════════════════════ */
+  // (v1.3.1) Removed selectors for elements deleted in earlier releases
+  // (#hero-fallback-img, .strip-img/.hero-image-strip, .gallery-img/.gallery-photo)
+  // — resolves the UAT "selector mismatch in gallery" finding.
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', function () {
       this.style.display = 'none';
-      // If this is the hero fallback, make the hero-video-wrap show a gradient fallback
-      if (this.id === 'hero-fallback-img') {
-        const wrap = document.querySelector('.hero-video-wrap');
-        if (wrap) wrap.style.background = 'linear-gradient(160deg, #0a1628 0%, #103265 60%, #1e6fc0 100%)';
-      }
-      // If strip image fails, hide the whole strip
-      if (this.classList.contains('strip-img')) {
-        const strip = document.querySelector('.hero-image-strip');
-        if (strip) strip.style.display = 'none';
-      }
-      // If gallery photo fails, hide that card
-      if (this.classList.contains('gallery-img')) {
-        const card = this.closest('.gallery-photo');
-        if (card) card.style.display = 'none';
-      }
     });
   });
 
