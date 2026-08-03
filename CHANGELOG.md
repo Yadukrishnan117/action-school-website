@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.3] — 2026-07-20 · Hotfix: Hidden Elements Visible Under CSP
+
+### 🔧 Fixed
+- **Honeypot field and success message were visible** — the site's CSP (`style-src` without `unsafe-inline`) blocks inline `style="display:none"` attributes, so the spam honeypot, the form success message, and the sound-on icon rendered on load. All three now use a stylesheet class `.is-hidden`, and script.js toggles the class instead of inline styles.
+- Cache-bust bumped to `?v=1.3.3` for style.css and script.js
+
+---
+
 ## [1.3.2] — 2026-07-20 · Working Enquiry Form, SEO & Test-Report Fixes
 
 ### ✅ Added

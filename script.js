@@ -59,15 +59,10 @@
         videoMuted = !videoMuted;
         heroVideo.muted = videoMuted;
 
-        if (videoMuted) {
-          soundOffIcon.style.display = '';
-          soundOnIcon.style.display  = 'none';
-        } else {
-          soundOffIcon.style.display = 'none';
-          soundOnIcon.style.display  = '';
-          // Resume play if paused
-          heroVideo.play().catch(() => {});
-        }
+        soundOffIcon.classList.toggle('is-hidden', !videoMuted);
+        soundOnIcon.classList.toggle('is-hidden', videoMuted);
+        // Resume play if paused
+        if (!videoMuted) heroVideo.play().catch(() => {});
       });
     }
 
@@ -224,7 +219,7 @@
       // Basic validation (form has novalidate)
       if (!String(data.get('name') || '').trim() || !String(data.get('contact') || '').trim()) {
         if (formSuccess) {
-          formSuccess.style.display = 'block';
+          formSuccess.classList.remove('is-hidden');
           formSuccess.textContent = '⚠️ Please fill in your name and email/phone.';
         }
         return;
@@ -252,7 +247,7 @@
           btn.textContent = '✓ Sent! We\'ll be in touch.';
           btn.style.background = '#16a34a';
           if (formSuccess) {
-            formSuccess.style.display = 'block';
+            formSuccess.classList.remove('is-hidden');
             formSuccess.textContent = '✅ Thank you! We\'ll be in touch soon.';
           }
           form.reset();
@@ -261,7 +256,7 @@
           btn.textContent = originalText;
           btn.disabled = false;
           if (formSuccess) {
-            formSuccess.style.display = 'block';
+            formSuccess.classList.remove('is-hidden');
             formSuccess.textContent = '⚠️ Could not send right now. Please email info@actionschool.in or use WhatsApp.';
           }
         })
@@ -270,7 +265,7 @@
             btn.textContent      = originalText;
             btn.style.background = '';
             btn.disabled         = false;
-            if (formSuccess) formSuccess.style.display = 'none';
+            if (formSuccess) formSuccess.classList.add('is-hidden');
           }, 6000);
         });
     });
