@@ -5,6 +5,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.4] — 2026-09-14 · Enquiry Routing & Documentation Refresh
+
+### 🔧 Changed
+- **Enquiry form delivery address** — FormSubmit.co endpoint now routes submissions to `action.schoolkerala@gmail.com` (previously `info@actionschool.in`). ⚠️ One-time step: the first submission after this change triggers a FormSubmit activation email to the new address — click the confirmation link or enquiries will not be delivered. The public contact email shown on the site remains `info@actionschool.in`.
+- **README** — fixed a typo in the GitHub Pages A-record (`185.99.109.153` → `185.199.109.153`), updated the project structure listing, and noted that the site is English-only since v1.3.0.
+
+### 📋 Test Report Review (14 Sep 2026)
+- All June 2026 reports (QA 129/130, UAT 40/42, Security VAPT 10/10, v1.3.0 post-deploy 17/17) reviewed — no critical issues.
+- UAT console-error failure (gallery selector mismatch) confirmed fixed in v1.3.2.
+- QA "recommended" items (meta description, Open Graph tags) confirmed added in v1.3.2.
+- Still open: `images/kerala-aviation.jpg` hero image not yet uploaded; Cloudflare not yet configured; no QA pass has been run against v1.3.2+ (form delivery end-to-end should be tested).
+- ⚠️ **`actionschool.in` has no MX records** — `info@actionschool.in` cannot receive mail (this is why FormSubmit activation never arrived). Set up email hosting (Google Workspace / Zoho / GoDaddy) and add its MX records in GoDaddy DNS, or change the publicly displayed address.
+
+---
+
 ## [1.3.3] — 2026-07-20 · Hotfix: Hidden Elements Visible Under CSP
 
 ### 🔧 Fixed
