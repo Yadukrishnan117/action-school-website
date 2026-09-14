@@ -9,7 +9,7 @@
 (function () {
   'use strict';
 
-  /* ─── State ──────────────────────────── */
+  /* ─── State ──────────────────────────────── */
   let videoMuted  = true;
 
   /* ─── DOM Refs ────────────────────────── */
@@ -24,9 +24,9 @@
   const formSuccess    = document.getElementById('form-success');
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      HEADER — scroll class
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   function onScroll() {
     if (window.scrollY > 60) {
       header.classList.add('scrolled');
@@ -38,9 +38,9 @@
   onScroll();
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      HERO VIDEO — load handling
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   if (heroVideo) {
     // Mark video as loaded when it starts playing
     heroVideo.addEventListener('canplay', () => {
@@ -75,9 +75,9 @@
   }
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      MOBILE NAV
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   menuToggle.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
     menuToggle.classList.toggle('open', isOpen);
@@ -108,9 +108,9 @@
   });
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      SCROLL REVEAL ANIMATION
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -137,9 +137,9 @@
   });
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      SMOOTH SCROLL for nav links
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
@@ -155,9 +155,9 @@
   });
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      ACTIVE NAV LINK on scroll
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('#main-nav a[href^="#"]');
 
@@ -181,9 +181,9 @@
   window.addEventListener('scroll', updateActiveNav, { passive: true });
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      GALLERY VIDEO — lazy load
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   const galleryVideos = document.querySelectorAll('.gallery-video');
   const videoObserver = new IntersectionObserver(
     (entries) => {
@@ -201,9 +201,9 @@
   galleryVideos.forEach(v => videoObserver.observe(v));
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      ENQUIRY FORM
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   // Submissions are delivered to action.schoolkerala@gmail.com via FormSubmit.co (AJAX endpoint).
   // NOTE: the very first submission triggers a one-time activation email to
   // action.schoolkerala@gmail.com — click the link in it to start receiving enquiries.
@@ -243,6 +243,12 @@
           if (!res.ok) throw new Error('Request failed: ' + res.status);
           return res.json();
         })
+        .then(j => {
+          // FormSubmit replies HTTP 200 with success:"false" when the form is
+          // not yet activated — treat that as a failure, not a delivery.
+          if (j && String(j.success) === 'false') throw new Error(j.message || 'Not delivered');
+          return j;
+        })
         .then(() => {
           btn.textContent = '✓ Sent! We\'ll be in touch.';
           btn.style.background = '#16a34a';
@@ -257,7 +263,7 @@
           btn.disabled = false;
           if (formSuccess) {
             formSuccess.classList.remove('is-hidden');
-            formSuccess.textContent = '⚠️ Could not send right now. Please email info@actionschool.in or use WhatsApp.';
+            formSuccess.textContent = '⚠️ Could not send right now. Please try again later or reach us on WhatsApp.';
           }
         })
         .finally(() => {
@@ -272,10 +278,10 @@
   }
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      IMAGE ERROR HANDLING
      Gracefully hide broken images
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   // (v1.3.1) Removed selectors for elements deleted in earlier releases
   // (#hero-fallback-img, .strip-img/.hero-image-strip, .gallery-img/.gallery-photo)
   // — resolves the UAT "selector mismatch in gallery" finding.
@@ -286,9 +292,9 @@
   });
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      ORBIT ANIMATION PAUSE on hover
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   document.querySelectorAll('.orbit').forEach(orbit => {
     orbit.addEventListener('mouseenter', () => {
       orbit.style.animationPlayState = 'paused';
@@ -299,9 +305,9 @@
   });
 
 
-  /* ═══════════════════════════════════════
+  /* ═══════════════════════════════════════════
      CARD SHUFFLE ANIMATION
-  ═══════════════════════════════════════ */
+  ═══════════════════════════════════════════ */
   (function () {
     const stack = document.querySelector('.about-card-stack');
     if (!stack) return;
