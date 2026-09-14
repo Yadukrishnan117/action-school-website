@@ -204,10 +204,10 @@
   /* ═══════════════════════════════════════
      ENQUIRY FORM
   ═══════════════════════════════════════ */
-  // Submissions are delivered to info@actionschool.in via FormSubmit.co (AJAX endpoint).
+  // Submissions are delivered to action.schoolkerala@gmail.com via FormSubmit.co (AJAX endpoint).
   // NOTE: the very first submission triggers a one-time activation email to
-  // info@actionschool.in — click the link in it to start receiving enquiries.
-  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@actionschool.in';
+  // action.schoolkerala@gmail.com — click the link in it to start receiving enquiries.
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/action.schoolkerala@gmail.com';
 
   if (form) {
     form.addEventListener('submit', (e) => {
